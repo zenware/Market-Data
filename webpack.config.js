@@ -1,4 +1,3 @@
-const packageJSON = require('./package.json')
 const webpack = require('webpack')
 const webpackClean = require('clean-webpack-plugin')
 const webpackMerge = require('webpack-merge')
@@ -43,7 +42,7 @@ let base = {
         new htmlWebpackPlugin({
             template: path.join(__dirname, 'client', 'index.html'),
             inject: 'body',
-            title: packageJSON.name,
+            title: 'Market Data',
             favicon: path.join(__dirname, 'client', 'assets', 'favicon.ico')
         })
     ],
@@ -51,8 +50,7 @@ let base = {
         return [
             require('postcss-inline-media'),
             require('postcss-simple-vars')({
-              variables: require(path.join(__dirname, 'client', 'style',
-                  'vendor', 'variables.js'))
+              variables: require(path.join(__dirname, 'client', 'styles', 'variables.js'))
             }),
             require('precss'),
             require('postcss-flexbox'),

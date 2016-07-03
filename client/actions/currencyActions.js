@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosConfig = {
-    baseURL: 'http://fixer.io/'
+    baseURL: 'http://localhost:8080/'
 }
 
 const getRatesSuccess = (payload) => {
@@ -13,5 +13,11 @@ const getRatesFail = (error) => {
 }
 
 export const getRates = (symbol) => {
-    const endPoint = `/latest?base=${symbol}`
+    const endPoint = `/v1/currency/${symbol}`
+
+    return dispatch => {
+        axios.get(endPoint, axiosConfig)
+            .then(response => dispatch(getRatesSuccess(response.data)))
+            .catch(error => dispatch(getRatesFail(error.data)))
+    }
 }

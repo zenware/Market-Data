@@ -1,6 +1,6 @@
 import React from 'react'
 
-import NavItem from './common/NavItem'
+import NavItem from '../atoms/NavItem'
 
 const NavBar = (props) => {
     return (
