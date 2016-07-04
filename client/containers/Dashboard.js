@@ -11,7 +11,15 @@ class Dashboard extends Component {
         super(props)
 
         this.state = {
+            isLoading: true,
             stockSymbol: ''
+        }
+    }
+    componentWillReceiveProps(nextProps) {
+        if (nextProps) {
+            this.setState({
+                isLoading: false
+            })
         }
     }
     handleChange = (e) => {
@@ -31,7 +39,7 @@ class Dashboard extends Component {
         })
     }
     render() {
-        const { stockSymbol } = this.state
+        const { isLoading, stockSymbol } = this.state
         const { quoteData } = this.props
 
         return (
@@ -39,7 +47,7 @@ class Dashboard extends Component {
                 <h3>Stock Data</h3>
                 <StockForm onSubmit={this.handleSubmit}
                     onChange={this.handleChange} value={stockSymbol} />
-                <StockDetails />
+                { isLoading ? '' : <StockDetails {...quoteData} /> }
             </div>
         )
     }

@@ -4,12 +4,17 @@ const StockDetails = (props) => {
     return (
         <div>
             <span>
-                <h5>{ props.symbol }</h5>
-                <h5>{ props.name }</h5>
+                <h5>{ props.Symbol }  {props.Name}</h5>
             </span>
             <span>
-                <h6>{ props.lastPrice }</h6>
-                <h6>{ props.change }</h6>
+                <h6>{ props.LastPrice } &nbsp; { props.Change }</h6>
+            </span>
+            <span>
+                <a onClick={props.onBuy}>Buy</a>
+                &nbsp;
+                <a onClick={props.onSell}>Sell</a>
+                &nbsp;
+                <a onClick={props.onWatch}>Watch</a>
             </span>
         </div>
     )

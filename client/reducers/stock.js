@@ -7,7 +7,7 @@ const stock = (state = initialState, action) => {
         case 'GET_STOCK_QUOTE_DATA':
             console.log(action)
             return Object.assign({}, state, {
-                quoteData: action.payload.data
+                quoteData: action.payload
             })
         default:
             return state
