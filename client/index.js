@@ -9,7 +9,7 @@ import Root from './containers/Root'
 import Home from './containers/Home'
 import Dashboard from './containers/Dashboard'
 import Login from './containers/Login'
-import Register from './containers/Register'
+import SignUp from './containers/SignUp'
 
 ReactDOM.render(
     <Provider store={store}>
@@ -18,7 +18,7 @@ ReactDOM.render(
                 <IndexRoute component={Home} />
                 <Route path='dash' component={Dashboard} />
                 <Route path='login' component={Login} />
-                <Route path='register' component={Register} />
+                <Route path='signup' component={SignUp} />
             </Route>
         </Router>
     </Provider>,

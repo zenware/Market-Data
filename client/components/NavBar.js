@@ -8,7 +8,7 @@ const NavBar = (props) => {
             <NavItem to='/' itemName='Home' />
             <NavItem to='/dash' itemName='Dashboard' />
             <NavItem to='/login' itemName='Login' />
-            <NavItem to='/register' itemName='Sign Up' />
+            <NavItem to='/signup' itemName='Sign Up' />
         </div>
     )
 }
