@@ -3,3 +3,4 @@ node_modules
 .module-cache
 *.log*
 *bundle*
+config.json

@@ -1,9 +1,13 @@
+// const config = require('./config.json')
+const env = process.env.NODE_ENV
 const express = require('express')
+const app = express()
 const path = require('path')
 const cors = require('cors')
+const pg = require('pg')
+// const knex = require('knex')(config.knex)
 const bodyParser = require('body-parser')
 const bhttp = require('bhttp')
-const app = express()
 
 app.use(cors())
 app.use(bodyParser.json())
@@ -26,6 +30,10 @@ app.get('/v1/stock/:symbol', (req, res) => {
         if (error) console.log(error)
         res.send(response.body.toString())
     })
+})
+
+app.get('/v1/user/:username', (req, res) => {
+    res.send('You have request user', req.params.username)
 })
 
 app.listen(8080, () => {
