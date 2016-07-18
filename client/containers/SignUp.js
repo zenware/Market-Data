@@ -13,19 +13,9 @@ class SignUp extends Component {
             password: ''
         }
     }
-    handleUsername = (e) => {
+    handleInputChange = (e) => {
         this.setState({
-            username: e.target.value
-        })
-    }
-    handleEmail = (e) => {
-        this.setState({
-            email: e.target.value
-        })
-    }
-    handlePassword = (e) => {
-        this.setState({
-            password: e.target.value
+            [e.target.name]: e.target.value
         })
     }
     handleSubmit = (e) => {
@@ -37,9 +27,7 @@ class SignUp extends Component {
         return (
             <div>
                 <SignUpForm onSubmit={this.handleSubmit}
-                    onUsername={this.handleUsername}
-                    onEmail={this.handleEmail}
-                    onPassword={this.handlePassword} />
+                    onChange={this.handleInputChange}/>
                 <span>
                     Already have an account?
                     <Link to='/login'>Log In</Link>

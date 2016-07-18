@@ -11,14 +11,9 @@ class Login extends Component {
             password: ''
         }
     }
-    handleUsername = (e) => {
+    handleInputChange = (e) => {
         this.setState({
-            username: e.target.value
-        })
-    }
-    handlePassword = (e) => {
-        this.setState({
-            password: e.target.value
+            [e.target.name]: e.target.value
         })
     }
     handleSubmit = (e) => {
@@ -29,7 +24,7 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <LoginForm />
+                <LoginForm onChange={this.handleInputChange} />
             </div>
         )
     }

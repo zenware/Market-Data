@@ -5,7 +5,7 @@ const Input = (props) => {
     return (
         <input type={props.type} styleName={props.style || 'root'}
             onChange={props.onChange} placeholder={props.placeholder}
-            value={props.value} />
+            value={props.value} name={props.name} />
     )
 }
 

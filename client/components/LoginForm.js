@@ -8,9 +8,9 @@ const LoginForm = (props) => {
     return (
         <Form onSubmit={props.onSubmit}>
             <Input type='text' placeholder='Username'
-                onChange={props.onUsername} />
+                name='username' onChange={props.onChange} />
             <Input type='password' placeholder='Password'
-                onChange={props.onPassword} />
+                name='password' onChange={props.onChange} />
             <Btn text='Log In' />
         </Form>
     )
