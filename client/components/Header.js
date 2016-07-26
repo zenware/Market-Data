@@ -1,22 +1,14 @@
 import React from 'react'
+import CSSModules from 'react-css-modules'
 
-const { header } = require('../assets/mockData.json')
+import Style from '../styles/components/Header'
 
 const Header = (props) => {
-    const changeColor = (value) => value === 'positive' ? '21D050' : 'DB2626'
-
     return (
-        <marquee>
-            { header.map(item =>
-                <span>
-                    { item.symbol + ' ' }
-                    <font color={changeColor(item.value)}>
-                        { item.change + ' ' }
-                    </font>
-                </span>
-            ) }
-        </marquee>
+        <div styleName='root'>
+            HEADER
+        </div>
     )
 }
 
-export default Header
+export default CSSModules(Header, Style)

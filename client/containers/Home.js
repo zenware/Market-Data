@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Modal from 'boron/FlyModal'
 
@@ -9,12 +8,13 @@ import HomePageHero from '../components/HomePageHero'
 
 class Home extends Component {
     render() {
-        const { count, plusOne } = this.props
+        const { count, dispatch } = this.props
+
         return (
             <div>
                 <HomePageHero />
                 { count }
-                <button onClick={plusOne}>
+                <button onClick={() => dispatch(increment())}>
                     Click
                 </button>
             </div>
@@ -27,10 +27,4 @@ const mapStateToProps = (state) => {
     return { count }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        plusOne: bindActionCreators(increment, dispatch)
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps)(Home)

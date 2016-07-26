@@ -8,7 +8,6 @@ const Root = (props) => {
     return (
         <div>
             <NavBar />
-            <Header />
             { props.children }
             <Footer />
         </div>

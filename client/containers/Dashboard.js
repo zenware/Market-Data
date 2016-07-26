@@ -30,10 +30,9 @@ class Dashboard extends Component {
     handleSubmit = (e) => {
         const { stockSymbol } = this.state
         const { dispatch } = this.props
-        const symbol = stockSymbol.toUpperCase()
         e.preventDefault()
 
-        dispatch(getStockQuote(symbol))
+        dispatch(getStockQuote(stockSymbol.toUpperCase()))
         this.setState({
             stockSymbol: ''
         })

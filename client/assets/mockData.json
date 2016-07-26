@@ -1,5 +1,5 @@
 {
-    "header": [
+    "stocks": [
         { "symbol": "GOOG", "change": "+1.47%", "value": "positive" },
         { "symbol": "TSLA", "change": "-3.57%", "value": "negative" },
         { "symbol": "AAPL", "change": "+1.83%", "value": "positive" },
