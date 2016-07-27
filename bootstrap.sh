@@ -5,9 +5,8 @@ sudo apt-get update
 sudo apt-get install -y npm
 
 export DEBIAN_FRONTEND=noninteractive
-# postgresql in repos are '9.4' and 'the supported version'
-# I'm assuming this will get postgresql-9.5
-sudo apt-get install -y postgresql postgresql-contrib
+PG_VERSION=9.4
+sudo apt-get install -y postgresql-$PG_VERSION postgresql-contrib-$PG_VERSION
 
 # Postgresql Configuration files
 PG_CONF="/etc/postgresql/$PG_VERSION/main/postgresql.conf"
@@ -47,8 +46,8 @@ sudo -u postgres psql -c "CREATE DATABASE $APP_DB_NAME WITH OWNER=$APP_DB_USER L
 # Give the user permissions to create new DB's (Might be needed for running tests)
 sudo -u postgres psql -c "ALTER USER $APP_DB_USER CREATEDB;"
 
-# How run an SQL File from the database folder
-# sudo -u postgres psql $APP_DB_NAME -f /vagrant/database/db_migration.sql
+# Prepping the db with the schema
+sudo -u postgres psql $APP_DB_NAME -f /vagrant/schema/schema.sql
 
 echo "Your PostgreSQL database has been setup and can be accessed on your local machine on the forwarded port (default: 15432)"
 echo "Host: localhost"
