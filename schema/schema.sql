@@ -45,7 +45,7 @@ CREATE TABLE portfolios (
     funds DECIMAL DEFAULT 100000,
     date_created TIMESTAMP DEFAULT now(),
     date_updated TIMESTAMP DEFAULT now(),
-    date_deleted TIMESTAMP DEFAULT NULL
+    date_deleted TIMESTAMP DEFAULT NULL,
     status VARCHAR(10) DEFAULT 'active'
 );
 
