@@ -32,7 +32,7 @@ EOF
 "
 
 # Load in the new config
-sudo -u postgres service postgresql restart
+sudo systemctl restart postgresql
 
 # Some Sane Defaults for development
 APP_DB_NAME=marketdata_dev
