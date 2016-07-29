@@ -57,11 +57,10 @@ echo "Your PostgreSQL database has been setup and can be accessed on your local 
 echo "Host: localhost"
 echo "Port: 15432"
 printf "Database: $APP_DB_NAME\n  Username: $APP_DB_USER\n  Password: $APP_DB_PASS\n"
-printf "Admin access to postgres user via VM:\n  vagrant ssh\n  sudo su - postgres\n"
-printf "psql access to app database user via VM:\n  vagrant ssh\n  sudo su - postgres"
+printf "Admin access to postgres user via VM:\n  vagrant ssh\n  sudo su postgres\n"
+printf "psql access to app database user via VM:\n  vagrant ssh\n  sudo su postgres"
 printf "  PGUSER=$APP_DB_USER PGPASSWORD=$APP_DB_PASS psql -h localhost $APP_DB_NAME\n"
 echo "Env variable for application development:"
 printf "  DATABASE_URL=postgresql://$APP_DB_USER:$APP_DB_PASS@localhost:15432/$APP_DB_NAME\n"
 echo "Local command to access the database via psql:"
 echo "  PGUSER=$APP_DB_USER PGPASSWORD=$APP_DB_PASS psql -h localhost -p 15432 $APP_DB_NAME"
-
