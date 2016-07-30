@@ -1,5 +1,7 @@
-CREATE SEQUENCE id_sequence;
-CREATE OR REPLACE FUNCTION id_generator(
+CREATE SCHEMA marketdata;
+
+CREATE SEQUENCE marketdata.id_sequence;
+CREATE OR REPLACE FUNCTION marketdata.id_generator(
     out new_id bigint
 ) AS $$
 DECLARE
@@ -17,8 +19,8 @@ END;
 $$
 LANGUAGE PLPGSQL;
 
-CREATE TABLE users (
-    id BIGINT PRIMARY KEY NOT NULL DEFAULT id_generator(),
+CREATE TABLE marketdata.users (
+    id BIGINT PRIMARY KEY NOT NULL DEFAULT marketdata.id_generator(),
     username VARCHAR(35) UNIQUE NOT NULL,
     first_name VARCHAR(155),
     last_name VARCHAR(155),
@@ -31,16 +33,16 @@ CREATE TABLE users (
     status VARCHAR(10) DEFAULT 'active'
 );
 
-CREATE TABLE user_sessions (
+CREATE TABLE marketdata.user_sessions (
     session_key TEXT PRIMARY KEY,
-    user_id BIGINT REFERENCES users(id) NOT NULL,
+    user_id BIGINT REFERENCES marketdata.users(id) NOT NULL,
     login_time TIMESTAMP NOT NULL,
     last_seen_time TIMESTAMP NOT NULL
 );
 
-CREATE TABLE portfolios (
-    id BIGINT PRIMARY KEY NOT NULL DEFAULT id_generator(),
-    user_id BIGINT REFERENCES users(id) NOT NULL,
+CREATE TABLE marketdata.portfolios (
+    id BIGINT PRIMARY KEY NOT NULL DEFAULT marketdata.id_generator(),
+    user_id BIGINT REFERENCES marketdata.users(id) NOT NULL,
     name VARCHAR(25) DEFAULT 'Portfolio',
     funds DECIMAL DEFAULT 100000,
     date_created TIMESTAMP DEFAULT now(),
@@ -49,10 +51,10 @@ CREATE TABLE portfolios (
     status VARCHAR(10) DEFAULT 'active'
 );
 
-CREATE TABLE stocks (
-    id BIGINT PRIMARY KEY NOT NULL DEFAULT id_generator(),
-    user_id BIGINT REFERENCES users(id) NOT NULL,
-    portfolio_id BIGINT REFERENCES portfolios(id) NOT NULL,
+CREATE TABLE marketdata.stocks (
+    id BIGINT PRIMARY KEY NOT NULL DEFAULT marketdata.id_generator(),
+    user_id BIGINT REFERENCES marketdata.users(id) NOT NULL,
+    portfolio_id BIGINT REFERENCES marketdata.portfolios(id) NOT NULL,
     symbol VARCHAR(20) NOT NULL,
     shares INTEGER DEFAULT 0,
     date_created TIMESTAMP DEFAULT now(),
@@ -60,11 +62,11 @@ CREATE TABLE stocks (
     date_deleted TIMESTAMP DEFAULT NULL
 );
 
-CREATE TABLE stock_transactions (
-    id BIGINT PRIMARY KEY NOT NULL DEFAULT id_generator(),
-    user_id BIGINT REFERENCES users(id) NOT NULL,
-    portfolio_id BIGINT REFERENCES portfolios(id) NOT NULL,
-    stock_id BIGINT REFERENCES stocks(id) NOT NULL,
+CREATE TABLE marketdata.stock_transactions (
+    id BIGINT PRIMARY KEY NOT NULL DEFAULT marketdata.id_generator(),
+    user_id BIGINT REFERENCES marketdata.users(id) NOT NULL,
+    portfolio_id BIGINT REFERENCES marketdata.portfolios(id) NOT NULL,
+    stock_id BIGINT REFERENCES marketdata.stocks(id) NOT NULL,
     buy_date TIMESTAMP,
     sell_date TIMESTAMP,
     buy_price DECIMAL,

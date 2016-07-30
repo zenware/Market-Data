@@ -51,14 +51,16 @@ sudo -u postgres psql -c "CREATE DATABASE $APP_DB_NAME WITH OWNER=$APP_DB_USER L
 sudo -u postgres psql -c "ALTER USER $APP_DB_USER CREATEDB;"
 
 # Prepping the db with the schema
+DB_SCHEMA=first_md_schema
 sudo -u postgres psql $APP_DB_NAME -f /vagrant/schema/schema.sql
+sudo -u postgres psql $APP_DB_NAME -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA $APP_DB_USER TO $APP_DB_USER";
 
 echo "Your PostgreSQL database has been setup and can be accessed on your local machine on the forwarded port (default: 15432)"
 echo "Host: localhost"
 echo "Port: 15432"
 printf "Database: $APP_DB_NAME\n  Username: $APP_DB_USER\n  Password: $APP_DB_PASS\n"
-printf "Admin access to postgres user via VM:\n  vagrant ssh\n  sudo su postgres\n"
-printf "psql access to app database user via VM:\n  vagrant ssh\n  sudo su postgres"
+printf "Admin access to postgres user via VM:\n  vagrant ssh\n  sudo -u postgres\n"
+printf "psql access to app database user via VM:\n  vagrant ssh\n  sudo -u postgres"
 printf "  PGUSER=$APP_DB_USER PGPASSWORD=$APP_DB_PASS psql -h localhost $APP_DB_NAME\n"
 echo "Env variable for application development:"
 printf "  DATABASE_URL=postgresql://$APP_DB_USER:$APP_DB_PASS@localhost:15432/$APP_DB_NAME\n"
