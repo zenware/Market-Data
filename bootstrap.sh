@@ -53,7 +53,8 @@ sudo -u postgres psql -c "ALTER USER $APP_DB_USER CREATEDB;"
 # Prepping the db with the schema
 DB_SCHEMA=first_md_schema
 sudo -u postgres psql $APP_DB_NAME -f /vagrant/schema/schema.sql
-sudo -u postgres psql $APP_DB_NAME -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA $APP_DB_USER TO $APP_DB_USER";
+sudo -u postgres psql $APP_DB_NAME -c "GRANT USAGE ON SCHEMA public TO $APP_DB_USER";
+sudo -u postgres psql $APP_DB_NAME -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO $APP_DB_USER";
 
 echo "Your PostgreSQL database has been setup and can be accessed on your local machine on the forwarded port (default: 15432)"
 echo "Host: localhost"
