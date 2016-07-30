@@ -33,4 +33,3 @@
     }
 }
 ```
-9. Hack the planet
