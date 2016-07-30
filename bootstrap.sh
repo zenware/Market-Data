@@ -3,10 +3,7 @@
 ln -s /vagrant/* ~/.
 
 sudo apt-get update
-# npm has a lot of dependencies, including 'nodejs'
-sudo apt-get install -y npm
-# Get more deps
-#npm install
+# sudo apt-get install -y npm
 
 export DEBIAN_FRONTEND=noninteractive
 PG_VERSION=9.4
