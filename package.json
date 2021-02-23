@@ -55,7 +55,7 @@
     "postcss": "^5.0.20",
     "postcss-flexbox": "^1.0.2",
     "postcss-inline-media": "0.0.1",
-    "postcss-loader": "^0.9.1",
+    "postcss-loader": "^5.0.0",
     "postcss-short": "^1.4.0",
     "postcss-simple-vars": "^1.2.0",
     "precss": "^1.4.0",
