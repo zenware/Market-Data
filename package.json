@@ -50,7 +50,7 @@
     "html-webpack-plugin": "^2.16.0",
     "jsdom": "^9.2.1",
     "json-loader": "^0.5.4",
-    "mocha": "^2.5.3",
+    "mocha": "^8.3.1",
     "node-sass": "^3.7.0",
     "postcss": "^5.0.20",
     "postcss-flexbox": "^1.0.2",
