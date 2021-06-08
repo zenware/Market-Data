@@ -57,7 +57,7 @@
     "postcss-inline-media": "1.4.0",
     "postcss-loader": "^0.9.1",
     "postcss-short": "^1.4.0",
-    "postcss-simple-vars": "^5.0.2",
+    "postcss-simple-vars": "^6.0.3",
     "precss": "^1.4.0",
     "react-addons-test-utils": "^15.1.0",
     "sinon": "^1.17.4",
