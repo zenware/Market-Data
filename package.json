@@ -54,7 +54,7 @@
     "node-sass": "^3.7.0",
     "postcss": "^5.0.20",
     "postcss-flexbox": "^1.0.2",
-    "postcss-inline-media": "0.0.1",
+    "postcss-inline-media": "1.4.0",
     "postcss-loader": "^0.9.1",
     "postcss-short": "^1.4.0",
     "postcss-simple-vars": "^5.0.2",
