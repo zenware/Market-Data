@@ -60,7 +60,7 @@
     "postcss-simple-vars": "^6.0.3",
     "precss": "^1.4.0",
     "react-addons-test-utils": "^15.1.0",
-    "sinon": "^1.17.4",
+    "sinon": "^15.0.1",
     "style-loader": "^2.0.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.0",
