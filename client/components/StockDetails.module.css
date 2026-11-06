@@ -1,0 +1,57 @@
+.root {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.symbolRow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.symbol {
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+}
+
+.name {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.price {
+  margin-top: 0.75rem;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.change {
+  display: inline-flex;
+  margin-top: 0.4rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.positive {
+  background: var(--positive-soft);
+  color: var(--positive);
+}
+
+.negative {
+  background: var(--negative-soft);
+  color: var(--negative);
+}
+
+.meta {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+}

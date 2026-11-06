@@ -1,6 +1,7 @@
 import type { ChangeEventHandler, FormEventHandler } from 'react'
 
 import Btn from '../atoms/Btn'
+import styles from './StockForm.module.css'
 
 interface StockFormProps {
   value: string
@@ -11,8 +12,9 @@ interface StockFormProps {
 const StockForm = ({ value, onChange, onSubmit }: StockFormProps) => {
   return (
     <div>
-      <form onSubmit={onSubmit}>
+      <form className={styles.form} onSubmit={onSubmit}>
         <input
+          className={styles.input}
           type='text'
           name='symbol'
           aria-label='Stock symbol'

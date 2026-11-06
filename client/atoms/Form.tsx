@@ -1,5 +1,7 @@
 import type { FormEventHandler, ReactNode } from 'react'
 
+import styles from './Form.module.css'
+
 interface FormProps {
   children: ReactNode
   onSubmit?: FormEventHandler<HTMLFormElement>
@@ -7,8 +9,10 @@ interface FormProps {
 }
 
 const Form = ({ children, onSubmit, className }: FormProps) => {
+  const classes = [styles.root, className].filter(Boolean).join(' ')
+
   return (
-    <form className={className} onSubmit={onSubmit}>
+    <form className={classes} onSubmit={onSubmit}>
       {children}
     </form>
   )

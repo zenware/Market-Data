@@ -19,14 +19,15 @@ const ComingSoon = () => {
 
   return (
     <div className={styles.root}>
-      <div className={styles.container}>
-        <div className={styles.avatar} />
-        <div className={styles['text-container']}>
-          <h1 className={styles.header}>In Construction...</h1>
-          <p className={styles.description}>(coming soon)</p>
-        </div>
+      <div className={styles.card}>
+        <span className={styles.badge}>Coming soon</span>
+        <h1 className={styles.title}>Portfolios &amp; trading</h1>
+        <p className={styles.description}>
+          Track positions, manage portfolios, and paper-trade stocks right here. Leave your email
+          and we’ll let you know when it lands.
+        </p>
+        <NewsLetterForm onSubmit={handleSubmit} onChange={handleInputChange} />
       </div>
-      <NewsLetterForm onSubmit={handleSubmit} onChange={handleInputChange} />
     </div>
   )
 }

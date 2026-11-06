@@ -1,4 +1,33 @@
 .root {
-    margin-top: 95vh;
-    text-align: center;
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 1.4rem 1.5rem;
+  flex-wrap: wrap;
+}
+
+.inner a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.inner a:hover {
+  color: var(--text);
+}
+
+@media (max-width: 640px) {
+  .inner {
+    padding: 1.1rem 1rem;
+  }
 }

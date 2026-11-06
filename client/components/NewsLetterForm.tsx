@@ -14,9 +14,9 @@ const NewsLetterForm = ({ onSubmit, onChange }: NewsLetterFormProps) => {
   return (
     <div className={styles.root}>
       <form onSubmit={onSubmit}>
-        <Input type='text' name='name' onChange={onChange} />
-        <Input type='email' name='email' onChange={onChange} />
-        <Btn text='Click Me' />
+        <Input type='text' name='name' placeholder='Your name' onChange={onChange} />
+        <Input type='email' name='email' placeholder='Email address' onChange={onChange} />
+        <Btn text='Notify me' />
       </form>
     </div>
   )

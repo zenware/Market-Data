@@ -2,12 +2,15 @@ import { Outlet } from 'react-router-dom'
 
 import Footer from '../components/Footer'
 import NavBar from '../components/NavBar'
+import styles from './Root.module.css'
 
 const Root = () => {
   return (
-    <div>
+    <div className={styles.app}>
       <NavBar />
-      <Outlet />
+      <main className={styles.main}>
+        <Outlet />
+      </main>
       <Footer />
     </div>
   )

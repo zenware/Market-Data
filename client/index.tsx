@@ -2,6 +2,8 @@ import { createRoot } from 'react-dom/client'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 
+import './styles/global.css'
+
 import ComingSoon from './containers/ComingSoon'
 import Dashboard from './containers/Dashboard'
 import Login from './containers/Login'

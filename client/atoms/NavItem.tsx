@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import styles from '../styles/atoms/NavItem.module.css'
 
@@ -9,9 +9,13 @@ interface NavItemProps {
 
 const NavItem = ({ to, itemName }: NavItemProps) => {
   return (
-    <Link className={styles.root} to={to}>
+    <NavLink
+      end={to === '/'}
+      className={({ isActive }) => (isActive ? `${styles.root} ${styles.active}` : styles.root)}
+      to={to}
+    >
       {itemName}
-    </Link>
+    </NavLink>
   )
 }
 
