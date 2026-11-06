@@ -1,35 +1,66 @@
 # Market Data
 
-## Front-End Development Environment Setup
+![Market Data dashboard](docs/screenshot.png)
 
-1. Make sure you have at least Node v6+
-2. Run `npm install`
-3. Run `npm run development` for the dev environment
-4. Run `npm run production` to generate a static file build in the `/static` directory
-5. `npm test` to run unit tests (which aren't set up yet)
+A market-data foundation for a paper-trading simulator. The current build provides live stock quotes and FX rates; authentication, portfolios, and trading are schema-only for now.
 
-## Back-End Development Environment Setup
+## Requirements
 
-1. Download Vagrant: https://www.vagrantup.com/downloads.html
-2. Run `vagrant up` within the project's root directory
-3. Run `vagrant provision` to run the provision script again ONLY if you have modified it
-4. Run `vagrant ssh`
-5. While in your virtual box, run `‘sudo -i -u postgres`
-6. Paste `export PGUSER=$USER; export PGPASSWORD=$PASSWORD;`, where both `$USER` & `$PASSWORD` denote the generated values given to you by the provision script
-7. Run `psql -h localhost marketdata_dev`
-8. Create your own `config.json` file with the following format:
-```json
-{
-    "knex" : {
-        "client": "pg",
-        "connection": {
-            "host": "127.0.0.1",
-            "port": "15432",
-            "user": "$USER",
-            "password": "$PASSWORD",
-            "database": "marketdata_dev",
-            "charset": "UTF8"
-        }
-    }
-}
+- [Nix](https://nixos.org/) with [devenv](https://devenv.sh/) for the provisioned path.
+- Node 24 and npm 11 if you run without devenv.
+
+## Quick start
+
+```sh
+devenv shell     # installs Node 24 + PostgreSQL and project dependencies
+devenv up        # Postgres (see $DATABASE_URL), API :8080, Vite :3000
 ```
+
+Open `http://localhost:3000`.
+
+## Without devenv
+
+```sh
+npm ci
+npm run dev:api   # terminal 1
+npm run dev       # terminal 2
+```
+
+Postgres is not needed for the quote and FX endpoints.
+
+## Production build
+
+```sh
+npm run build
+npm start         # http://localhost:8080
+```
+
+## Database
+
+```sh
+psql -U marketdata -d marketdata_dev -c '\dt'   # inside devenv shell
+```
+
+The schema is applied on the first `devenv up` and lives in `schema/schema.sql`. The full connection URL is exported as `DATABASE_URL`. To reload the schema, reset the local dev database:
+
+```sh
+devenv processes down && rm -rf .devenv/state/postgres
+```
+
+## Commands
+
+| Command           | Purpose                                              |
+| ----------------- | ---------------------------------------------------- |
+| `npm run dev`     | Vite dev server on :3000, proxying `/v1` to :8080    |
+| `npm run dev:api` | API server with watch mode on :8080                  |
+| `npm run build`   | Typecheck, then build the client into `static/`      |
+| `npm start`       | Serve the API and built client on :8080              |
+| `npm run typecheck` | TypeScript check without emitting                  |
+| `npm test`        | Run the Vitest suite                                  |
+
+## Data sources
+
+- **FX rates:** [Frankfurter](https://frankfurter.dev/), keyless.
+- **Stock quotes:** Yahoo Finance chart JSON, keyless and unofficial.
+
+Upstream failures return `502` JSON rather than crashing the server.

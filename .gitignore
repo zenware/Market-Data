@@ -1,7 +1,5 @@
-.DS_STORE
+.DS_Store
 node_modules
-.vagrant
-.module-cache
+.devenv
+static/
 *.log*
-*bundle*
-config.json
